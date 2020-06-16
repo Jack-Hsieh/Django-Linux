@@ -1,0 +1,103 @@
+<!-- templates/registration/login.html -->
+
+<!-- <h2>Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form> -->
+
+
+<!-- <h2>Login</h2>
+<form method="post">
+  <input type="hidden" name="csrfmiddlewaretoken" value="Rv9eb5eAsBI3pwkrODh0zcC0aNoC8jqTO1H42ckX96YffsaneDh3aIJ5AKyer1n0">
+  <p><label for="id_username">Username:</label> <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username"></p>
+<p><label for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required id="id_password"></p>
+  <button type="submit">Login</button>
+</form> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Login-Accounts</title>
+
+    <style>
+      td {
+        padding: 5px
+      }
+
+      a.btn
+		{margin: 5px;
+		}
+		
+    </style>
+    <!-- Bootstrap core CSS -->
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+
+	<link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+ 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="text-center" data-gr-c-s-loaded="true">
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+		<h2 class="my-0 mr-md-auto font-weight-normal">Gold Rush From Appraisals</h5>
+		<br>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="/">Home</a>
+			<a class="p-2 text-dark" href="/feature/">Feature</a>
+			<a class="p-2 text-dark" href="/about/">About</a>
+			<a class="p-2 text-dark" href="/pricing/">Pricing</a>
+		</nav>
+			<a class="btn btn-outline-primary" href="{% url 'login' %}">Login</a>
+			<a class="btn btn-outline-primary" href="/accounts/signup/">Sign up</a>
+		</div>
+	{% if form.errors %}
+	<center>
+		<div>
+			<p style="color:Red"><b>您的帳號或密碼有誤。</b><br>Invalid login, please try again.</p>
+		</div>
+		<div>
+			<p></p>
+		</div>
+	</center>
+	{% endif %}
+
+	{% if next %}
+	    {% if user.is_authenticated %}
+	    <p>您沒有權限造訪此網頁。</p>
+	    {% else %}
+	    <p>請先登入。</p>
+	    {% endif %}
+	{% endif %}
+	<form method="post" action="/accounts/login/" class="form-signin" pb-autologin="true" autocomplete="off">
+	{% csrf_token %}
+	<table align="center" style="margin-top:100px">
+	<tr> 
+	    <td>{{ form.username.label_tag }}</td>
+	    <td>{{ form.username }}</td>
+	</tr>
+	<tr>
+	    <td>{{ form.password.label_tag }}</td>
+	    <td>{{ form.password }}</td>
+	</tr>
+	<tr>
+	<!-- 	我是next:{{ next }} -->
+	</tr>
+	<tr>
+	    <td></td>
+	    <td>
+	        <input type="submit" value="login" class="btn btn-secondary" >
+	    </td>
+	</tr>
+	</table>
+    <input type="hidden" name="next" value="{{ next }}" />
+	</form>
+</body>
+
+</center>
+</html>

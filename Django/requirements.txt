@@ -1,0 +1,13 @@
+PyMySQL
+beautifulsoup4
+Django
+django-import-export
+jieba
+keras-bert
+matplotlib
+numpy
+opencc-python-reimplemented
+pandas
+scikit-learn
+tensorflow
+pytest

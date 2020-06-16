@@ -1,0 +1,51 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title-home %}Home{% endblock %}
+
+{% block login %}
+
+{% if user.is_authenticated %}
+
+
+Hi {{ user.username }}, you are login
+<a href="{% url 'logout' %}">logout</a>
+
+{% else %}
+  <p>You are not logged in</p>
+<!--   <a href="{% url 'login' %}">login</a> -->
+{% endif %}
+{% endblock %}
+<!--  -->
+
+
+
+{% block post %}
+{% for post in post_list %}
+    <div class="post-wrapper">
+        <div class="post">
+            <div class="post-heading">
+                <h2 class="title">
+                    <a href="#">{{ post.title }}</a>
+                </h2>
+                <div class="date">{{ post.created_at|date:"Y / m / d" }}</div>
+            </div>
+            {% if post.photo %}
+            <div class="thumbnail">
+                <img class="Home-content" src="{{ post.photo }}" alt="" width="500" height="600">
+            </div>
+            {% else %}
+            <div class="thumbnail thumbnail-default"></div>
+            {% endif %}
+            <div class="post-content read-more-block">
+                {{ post.content }}
+            </div>
+            <div class="post-footer">
+                <a class="read-more" href="#">
+                    Read More <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

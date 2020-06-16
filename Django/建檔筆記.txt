@@ -1,0 +1,5 @@
+1. ??superuser ????:
+	python manage.py migrate #????
+	python manage.py createsuperuser
+
+2.
