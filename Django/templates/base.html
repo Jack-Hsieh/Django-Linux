@@ -16,6 +16,11 @@
 		height: auto;
 
 	}
+        
+        main.bg-white
+    	{float: absolute;
+    	 text-align: left;
+    	}
 
 	{% block about-style %}
 	{% endblock %}
@@ -36,8 +41,20 @@
 	{% block login %}
 	{% endblock %}
 	{% block signup %}
-    <body data-gr-c-s-loaded="true">
-    	<main>
+    <body class="text-center" data-gr-c-s-loaded="true">
+    	
+	<!-- User Login Template -->
+        <main class="bg-white">
+	{% if user.is_authenticated %}
+
+	Hi {{ user.username }}, you are login
+	<a href="{% url 'logout' %}">logout</a>
+	{% else %}
+	<a>You are not logged in</a>
+	{% endif %}
+        </main>
+        <!--  -->
+	<main>
 
 		    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
 		    	<h5 class="my-0 mr-md-auto font-weight-normal">Gold Rush From Appraisals</h5>
@@ -45,7 +62,7 @@
 
 		        <nav class="my-2 my-md-0 mr-md-3">
 		         	<a class="p-2 text-dark" href="/">Home</a>
-		        	<a class="p-2 text-dark" href="/feature/">Feature</a>
+		        	<a class="p-2 text-dark" href="/Chart/">Service</a>
 		        	<a class="p-2 text-dark" href="/about/">About</a>
 		        	<a class="p-2 text-dark" href="/pricing/">Pricing</a>
 		        </nav>

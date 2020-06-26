@@ -20,20 +20,41 @@
  	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
 	<style>
-		a.btn
+	a.btn
 	{margin: 5px;
 	}
 	
+	main.bg-white
+	{float: absolute;
+	 text-align: left;
+
+	}		
 	</style>
 
     </head>
     <body class="text-center" data-gr-c-s-loaded="true">
+	
+	<!-- User Login Template -->
+        <main class="bg-white">
+		{% block login %}
+
+		{% if user.is_authenticated %}
+
+		<a>Hi {{ user.username }}, you are login</a>
+		<a href="{% url 'logout' %}">logout</a>
+
+		{% else %}
+		<p>You are not logged in</p>
+		{% endif %}
+		{% endblock %}
+	</main>
+	<!--  -->
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-0 bg-white border-bottom box-shadow">
-            <h2 class="my-0 mr-md-auto font-weight-normal">Gold Rush From Appraisals</h5>
+            <h5 class="my-0 mr-md-auto font-weight-normal">Gold Rush From Appraisals</h5>
             <br>
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="/">Home</a>
-                <a class="p-2 text-dark" href="/feature/">Feature</a>
+                <a class="p-2 text-dark" href="/Chart/">Service</a>
                 <a class="p-2 text-dark" href="/about/">About</a>
                 <a class="p-2 text-dark" href="/pricing/">Pricing</a>
             </nav>
@@ -47,11 +68,6 @@
             <div style="line-height:35px;font-size:15px;border:1px;">
                 <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="p-2 text-dark" href="/Comment/">
-                    Comment
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a a class="p-2 text-dark" href="/Chart/">
                     Chart
                     </a>
@@ -59,6 +75,11 @@
                 <li class="nav-item">
                     <a a class="p-2 text-dark" href="/Renew/">
                     Renew
+                    </a>
+                </li>
+		<li class="nav-item">
+    		    <a class="p-2 text-dark" href="/Comment/">
+                    Support
                     </a>
                 </li>
 		</ul>

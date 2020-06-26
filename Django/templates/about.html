@@ -1,25 +1,5 @@
 {% extends 'base.html' %}
 
-
-<!-- User Login Template -->
-{% block title %}About{% endblock %}
-
-{% block login %}
-
-{% if user.is_authenticated %}
-
-
-Hi {{ user.username }}, you are login
-<a href="{% url 'logout' %}">logout</a>
-
-{% else %}
-  <p>You are not logged in</p>
-{% endif %}
-{% endblock %}
-<!--  -->
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
